@@ -15,29 +15,38 @@ using Riku.RikuCode.Extensions;
 using Riku.RikuCode.Mechanics;
 using Riku.RikuCode.Powers;
 
-namespace Riku.RikuCode.Cards.Common;
+namespace Riku.RikuCode.Cards.Uncommon;
 
-public class DarkBarrage() : RikuCard(1, CardType.Attack,
-    CardRarity.Rare, TargetType.AnyEnemy), IDarkSleight
+public class DarkBarrage() : RikuCard(0, CardType.Attack,
+    CardRarity.Uncommon, TargetType.AnyEnemy), IDarkSleight
 {
     protected override bool ShouldGlowGoldInternal => base.Owner.HasPower<DarknessPower>() || Owner.HasPower<DarkMasteryPower>();
     
-    protected override IEnumerable<DynamicVar> CanonicalVars => 
+    protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(6, ValueProp.Move),
-        new PowerVar<WeakPower>(1m),
-        new PowerVar<VulnerablePower>(1m)
-    ];
-    
-    public override IEnumerable<CardKeyword> CanonicalKeywords =>
-    [
-        CardKeyword.Innate
+        new CalculationBaseVar(0m),
+        new ExtraDamageVar(4m),
+        new CalculatedDamageVar(ValueProp.Move)
+            .WithMultiplier((card, _) =>
+            {
+                int attacksPlayed =
+                    CombatManager.Instance.History.CardPlaysFinished.Count(e =>
+                        e.HappenedThisTurn(card.CombatState) &&
+                        e.CardPlay.Card.Type == CardType.Attack &&
+                        e.CardPlay.Card.Owner == card.Owner);
+
+                bool doubled =
+                    card.Owner.HasPower<DarkMasteryPower>() ||
+                    card.Owner.HasPower<DarknessPower>();
+
+                return doubled
+                    ? attacksPlayed * 2
+                    : attacksPlayed;
+            })
     ];
     
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
-        HoverTipFactory.FromPower<WeakPower>(),
-        HoverTipFactory.FromPower<VulnerablePower>(),
         HoverTipFactory.FromPower<DarknessPower>(),
         RikuStaticHoverTips.DarkSleight,
     ];
@@ -46,55 +55,53 @@ public class DarkBarrage() : RikuCard(1, CardType.Attack,
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
-        decimal damage = base.DynamicVars.Damage.PreviewValue;
         var ownerCreature = Owner?.Creature;
         
         CenterCardCinematic.Start(RunManager.Instance.NetService.NetId);
         if (ownerCreature != null && Owner?.Character is Character.Riku riku)
         {
             AudioHelper.PlayRandomFinalAttack();
-            await riku.DashTo(ownerCreature, play.Target, distance: 300f, durationSeconds: 0.3F, overrideAnim: "shadowbreaker");
-            
+            riku.PlayAnimation(ownerCreature, "cast");
             riku.PlayVfxOnTarget(
                 play.Target,
                 "res://Riku/scenes/vfx.tscn",
-                Character.Riku.IsInDarkness(ownerCreature) ? "hit_dark" : "hit_normal"
+                "dark_barrage"
             );
-            SfxCmd.Play("res://Riku/sfx/riku_swing_up.wav");
-            await DamageCmd.Attack(damage).FromCard(this, play).Targeting(play.Target)
-                .WithValueProp(ValueProp.Unpowered)
-                .WithHitFx(null, Character.Riku.GetSfxPath(ownerCreature, "hit_hard (1).wav"))
-                .Execute(choiceContext);
-            await Task.Delay(120);
-            SfxCmd.Play("res://Riku/sfx/riku_swing_down.wav");
-            riku.PlayVfxOnTarget(
-                play.Target,
-                "res://Riku/scenes/vfx.tscn",
-                Character.Riku.IsInDarkness(ownerCreature) ? "hit_dark" : "hit_normal"
-            );
-            await CommonActions.CardAttack(this, play.Target)
-                .WithHitFx(null, Character.Riku.GetSfxPath(ownerCreature, "hit_hard (2).wav"))
-                .Execute(choiceContext);
-            await Task.Delay(300);
-            await riku.Retreat(ownerCreature, "shadowbreaker", false, 0.1F);
-            riku.PlayAnimation(ownerCreature, "appear");
+            await Task.Delay(200);
+            SfxCmd.Play("res://Riku/sfx/riku_thrust.wav");
             await Task.Delay(100);
+            RikuExtensions.CombatHelpers.RikuFakeHit(ownerCreature, play.Target, Character.Riku.GetSfxPath(ownerCreature, "hit_hard (1).wav"), "res://Riku/sfx/riku_thrust.wav", hitVfx: Character.Riku.IsInDarkness(ownerCreature) ? "hit_dark" : "hit_normal");
+            await Task.Delay(100);
+            RikuExtensions.CombatHelpers.RikuFakeHit(ownerCreature, play.Target, Character.Riku.GetSfxPath(ownerCreature, "hit_hard (2).wav"), hitVfx: Character.Riku.IsInDarkness(ownerCreature) ? "hit_dark" : "hit_normal");
+            await Task.Delay(100);
+            SfxCmd.Play("res://Riku/sfx/riku_thrust.wav");
+            await Task.Delay(100);
+            RikuExtensions.CombatHelpers.RikuFakeHit(ownerCreature, play.Target, Character.Riku.GetSfxPath(ownerCreature, "hit_hard (3).wav"), hitVfx: Character.Riku.IsInDarkness(ownerCreature) ? "hit_dark" : "hit_normal");
+            await Task.Delay(100);
+            SfxCmd.Play("res://Riku/sfx/riku_thrust.wav");
+            await Task.Delay(100);
+            RikuExtensions.CombatHelpers.RikuFakeHit(ownerCreature, play.Target, Character.Riku.GetSfxPath(ownerCreature, "hit_hard (4).wav"), hitVfx: Character.Riku.IsInDarkness(ownerCreature) ? "hit_dark" : "hit_normal");
+            await Task.Delay(100);
+            SfxCmd.Play("res://Riku/sfx/riku_thrust.wav");
+            await Task.Delay(100);
+            RikuExtensions.CombatHelpers.RikuFakeHit(ownerCreature, play.Target, Character.Riku.GetSfxPath(ownerCreature, "hit_hard (1).wav"), hitVfx: Character.Riku.IsInDarkness(ownerCreature) ? "hit_dark" : "hit_normal");
+            await Task.Delay(100);
+            SfxCmd.Play("res://Riku/sfx/riku_thrust.wav");
+            await Task.Delay(100);
+            RikuExtensions.CombatHelpers.RikuFakeHit(ownerCreature, play.Target, Character.Riku.GetSfxPath(ownerCreature, "hit_hard (2).wav"), hitVfx: Character.Riku.IsInDarkness(ownerCreature) ? "hit_dark" : "hit_normal");
+            await Task.Delay(100);
+            SfxCmd.Play("res://Riku/sfx/riku_thrust.wav");
+            await Task.Delay(100);
+            riku.PlayVfxOnTarget(play.Target, "res://Riku/scenes/vfx.tscn", Character.Riku.IsInDarkness(ownerCreature) ? "hit_dark" : "hit_normal");
         }
-        else
-            await CommonActions.CardAttack(this, play.Target, hitCount: 2)
-                .WithHitFx(null, Character.Riku.GetSfxPath(ownerCreature, "hit_hard (1).wav"))
-                .Execute(choiceContext);
+        await CommonActions.CardAttack(this, play.Target)
+            .WithHitFx(null, Character.Riku.GetSfxPath(ownerCreature, "hit_hard (3).wav"))
+            .Execute(choiceContext);
         CenterCardCinematic.End(RunManager.Instance.NetService.NetId);
-        await PowerCmd.Apply<WeakPower>(choiceContext, play.Target, base.DynamicVars.Weak.BaseValue,
-            base.Owner.Creature, this);
-        await PowerCmd.Apply<VulnerablePower>(choiceContext, play.Target, base.DynamicVars.Vulnerable.BaseValue,
-            base.Owner.Creature, this);
     }
     
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(2);
-        DynamicVars.Weak.UpgradeValueBy(1);
-        DynamicVars.Vulnerable.UpgradeValueBy(1);
+        DynamicVars.ExtraDamage.UpgradeValueBy(2);
     }
 }

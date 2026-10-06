@@ -1,3 +1,34 @@
 {
+  "RIKU-BRAVEHEART.description": "Gain 1 [gold]SP[/gold] at the start of your turn. Gain 2 [gold]SP[/gold] when you attack.",
+  "RIKU-BRAVEHEART.flavor": "",
+  "RIKU-BRAVEHEART.title": "Braveheart",
+
+  "RIKU-OBLIVION.description": "[gold]Dark Sleights[/gold] deal 25% more damage.",
+  "RIKU-OBLIVION.flavor": "",
+  "RIKU-OBLIVION.title": "Oblivion",
+
+  "RIKU-TRUE_BRAVEHEART.description": "Gain 2 [gold]SP[/gold] at the start of your turn. Gain 3 [gold]SP[/gold] when you attack. [purple]Dark Mastery[/purple] lasts 1 more turn.",
+  "RIKU-TRUE_BRAVEHEART.flavor": "",
+  "RIKU-TRUE_BRAVEHEART.title": "True Braveheart",
+
+  "RIKU-WAY_TO_THE_DAWN.description": "[gold]Darkness[/gold] deals 1 more damage and gain 1 more [gold]Block[/gold].",
+  "RIKU-WAY_TO_THE_DAWN.flavor": "",
+  "RIKU-WAY_TO_THE_DAWN.title": "Way To The Dawn",
   
+  "RIKU-KINGDOM_KEY_D.description": "Start combat with 10 [gold]SP[/gold].",
+  "RIKU-KINGDOM_KEY_D.flavor": "",
+  "RIKU-KINGDOM_KEY_D.title": "Kingdom Key D",
+
+  "RIKU-SOUL_EATER.description": "Start combat with 1 charge of [gold]Darkness[/gold]",
+  "RIKU-SOUL_EATER.flavor": "",
+  "RIKU-SOUL_EATER.title": "Soul Eater",
+
+  "RIKU-KEYBLADE_OF_HEART.description": "At the start of combat, add 2 random [gold]Dark Sleights[/gold] to your [gold]Hand[/gold].",
+  "RIKU-KEYBLADE_OF_HEART.flavor": "",
+  "RIKU-KEYBLADE_OF_HEART.title": "Keyblade Of Heart",
+
+
+  "RIKU-MIRAGE_SPLIT.description": "Upgrade [gold]Situation Command[/gold].",
+  "RIKU-MIRAGE_SPLIT.flavor": "",
+  "RIKU-MIRAGE_SPLIT.title": "Mirage Split"
 }

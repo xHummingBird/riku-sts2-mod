@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dfs2uqnulr6fx"
+path="res://.godot/imported/charged_thunder (2).wav-da29cbac7edd38c6dc8db5d6b6d4f5b5.sample"
+
+[deps]
+
+source_file="res://Riku/sfx/From_prev/charged_thunder (2).wav"
+dest_files=["res://.godot/imported/charged_thunder (2).wav-da29cbac7edd38c6dc8db5d6b6d4f5b5.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

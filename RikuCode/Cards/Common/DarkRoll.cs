@@ -12,16 +12,16 @@ using Riku.RikuCode.Extensions;
 using Riku.RikuCode.Mechanics;
 using Riku.RikuCode.Powers;
 
-namespace Riku.RikuCode.Cards.Uncommon;
+namespace Riku.RikuCode.Cards.Common;
 
-public class DarkRoll() : RikuCard(0, CardType.Skill,
-    CardRarity.Uncommon, TargetType.Self), IDarkSleight
+public class DarkRoll() : RikuCard(1, CardType.Skill,
+    CardRarity.Common, TargetType.Self), IDarkSleight
 {
     protected override bool ShouldGlowGoldInternal => base.Owner.HasPower<DarknessPower>() || Owner.HasPower<DarkMasteryPower>();
     
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new BlockVar(3, ValueProp.Move),
+        new BlockVar(5, ValueProp.Move),
         new CardsVar(1)
     ];
     
@@ -35,14 +35,17 @@ public class DarkRoll() : RikuCard(0, CardType.Skill,
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
-        await CommonActions.CardBlock(this, play);
-
+        int drawCard = DynamicVars.Cards.IntValue;
+        if (Owner.HasPower<DarknessPower>() || Owner.HasPower<DarkMasteryPower>())
+        {
+            drawCard = 2;
+        }
         var hand = PileType.Hand.GetPile(Owner);
         var cardsBeforeDraw = hand.Cards.ToHashSet();
 
         await CardPileCmd.Draw(
             choiceContext,
-            DynamicVars.Cards.IntValue,
+            drawCard,
             Owner);
 
         CardModel? drawnCard = hand.Cards
@@ -51,10 +54,6 @@ public class DarkRoll() : RikuCard(0, CardType.Skill,
         if (drawnCard is IDarkSleight)
         {
             await CommonActions.CardBlock(this, play);
-            if (Owner.HasPower<DarknessPower>() || Owner.HasPower<DarkMasteryPower>())
-            {
-                drawnCard.SetToFreeThisTurn();
-            }
         }
     }
 

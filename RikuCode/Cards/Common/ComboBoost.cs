@@ -8,6 +8,7 @@ using Riku.RikuCode.Relics;
 
 namespace Riku.RikuCode.Cards.Common;
 
+
 public class ComboBoost() : RikuCard(1, CardType.Skill,
     CardRarity.Common, TargetType.Self)
 {
@@ -33,13 +34,13 @@ public class ComboBoost() : RikuCard(1, CardType.Skill,
             relic.GainSituationPoints(DynamicVars["Sp"].IntValue);
         }
 
-        await PowerCmd.Apply<VigorPower>(choiceContext, Owner.Creature, DynamicVars.Vigor.BaseValue,
+        await PowerCmd.Apply<VigorPower>(choiceContext, Owner.Creature, DynamicVars["VigorPower"].BaseValue,
             Owner.Creature, this);
     }
 
     protected override void OnUpgrade()
     {
         DynamicVars["Sp"].UpgradeValueBy(1);
-        DynamicVars.Vigor.UpgradeValueBy(2);
+        DynamicVars["VigorPower"].UpgradeValueBy(2);
     }
 }

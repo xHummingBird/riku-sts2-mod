@@ -1,6 +1,8 @@
-﻿namespace Riku.RikuCode.Nodes;
+﻿using MegaCrit.Sts2.Core.Nodes.Combat;
 
-public class RikuNSelectionReticle
+namespace Riku.RikuCode.Nodes;
+
+public partial class RikuNSelectionReticle : NSelectionReticle
 {
     
 }

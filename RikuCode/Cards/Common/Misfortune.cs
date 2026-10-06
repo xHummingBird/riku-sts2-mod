@@ -11,10 +11,10 @@ using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
 using Riku.RikuCode.Extensions;
 
-namespace Riku.RikuCode.Cards.Uncommon;
+namespace Riku.RikuCode.Cards.Common;
 
 public class Misfortune() : RikuCard(0, CardType.Attack,
-    CardRarity.Uncommon, TargetType.AnyEnemy)
+    CardRarity.Common, TargetType.AnyEnemy)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [

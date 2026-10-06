@@ -1,3 +1,236 @@
 {
-  
+  "RIKU-DARK_AURA.description": "Deal {CalculatedDamage:diff()} damage. \nDeal [gold]{ExtraDamage:diff()}[/gold] additional damage for ALL your [gold]Dark Sleights[/gold].",
+  "RIKU-DARK_AURA.title": "Dark Aura",
+
+  "RIKU-DARK_FIRAGA.description": "Deal {Damage:diff()} damage to ALL enemies. \nApply 2 Vulnerable and Weak to ALL enemies.",
+  "RIKU-DARK_FIRAGA.title": "Dark Firaga",
+
+  "RIKU-SITUATION_COMMAND.description": "Perform a [gold]Situation Command[/gold].",
+  "RIKU-SITUATION_COMMAND.title": "Situation Command",
+
+  "RIKU-ARS_SOLUM.description": "Deal {Damage:diff()} damage and apply 2 [gold]Vulnerable[/gold].",
+  "RIKU-ARS_SOLUM.title": "Ars Solum",
+
+  "RIKU-FULL_COMBO.description": "Deal {Damage:diff()} damage [gold]{Repeat:diff()}[/gold] times. \nGain {Sp:diff()} [gold]SP[/gold].",
+  "RIKU-FULL_COMBO.title": "Full Combo",
+
+  "RIKU-TRUE_END.description": "Deal {Damage:diff()} damage to ALL enemies. \nHeal {Heal:diff()} [gold]HP[/gold].",
+  "RIKU-TRUE_END.title": "True End",
+
+  "RIKU-COMBO_RUSH.description": "Deal {Damage:diff()} damage [gold]{Repeat:diff()}[/gold] times. \nGain {Sp:diff()} [gold]SP[/gold].",
+  "RIKU-COMBO_RUSH.title": "Combo Rush",
+
+  "RIKU-STRIKE_RIKU.description": "Deal {Damage:diff()} damage.",
+  "RIKU-STRIKE_RIKU.title": "Strike",
+
+  "RIKU-DEFEND_RIKU.description": "Gain {Block:diff()} [gold]Block[/gold].",
+  "RIKU-DEFEND_RIKU.title": "Defend",
+
+  "RIKU-SHADOW_STRIKE.description": "Deal {Damage:diff()} damage. \nApply {WeakPower:diff()} [gold]Weak[/gold]. \n{DarknessIcon}: Hit an additional time.",
+  "RIKU-SHADOW_STRIKE.title": "Shadow Strike",
+
+  "RIKU-DARK_MAELSTROM.description": "Deal {Damage:diff()} damage and apply 2 [gold]Weak[/gold] to ALL enemies.",
+  "RIKU-DARK_MAELSTROM.title": "Dark Maelstrom",
+
+  "RIKU-AERIAL_SLAM.title": "Aerial Slam",
+  "RIKU-AERIAL_SLAM.description": "Deal {Damage:diff()} damage.\nNext turn, draw 2 cards.",
+
+  "RIKU-AIR_SLIDE.title": "Air Slide",
+  "RIKU-AIR_SLIDE.description": "Gain {Block:diff()} [gold]Block[/gold].\nDraw {Cards:diff()} {Cards:plural:card|cards}.",
+
+  "RIKU-BARRIER.title": "Barrier",
+  "RIKU-BARRIER.description": "Gain {Block:diff()} [gold]Block[/gold].\nGain {Sp:diff()} SP.",
+
+  "RIKU-BRUTAL_STRIKE.title": "Brutal Strike",
+  "RIKU-BRUTAL_STRIKE.description": "Deal {Damage:diff()} damage to ALL enemies.\nGain {Sp:diff()} SP.",
+
+  "RIKU-COMBO_BOOST.title": "Combo Boost",
+  "RIKU-COMBO_BOOST.description": "Gain {VigorPower:diff()} [gold]Vigor[/gold].\nGain {Sp:diff()} SP.",
+
+  "RIKU-COMBO_FINISHER.title": "Combo Finisher",
+  "RIKU-COMBO_FINISHER.description": "Deal {Damage:diff()} damage.\nIf you played a [gold]Dark Sleight[/gold] this turn, this card costs 0 {Energy:energyIcons()}.",
+
+  "RIKU-COUNTER_AURA.title": "Counter Aura",
+  "RIKU-COUNTER_AURA.description": "Deal {Damage:diff()} damage to ALL enemies.\nGain {Block:diff()} [gold]Block[/gold].",
+
+  "RIKU-DARK_BREAK.title": "Dark Break",
+  "RIKU-DARK_BREAK.description": "Deal {Damage:diff()} damage.\nIf this is the first card you play this turn, draw 1 card.\n{DarknessIcon}: Play a random {IfUpgraded:show:upgraded Attack|Attack} from your Draw Pile.",
+
+  "RIKU-DARK_HAZE.title": "Dark Haze",
+  "RIKU-DARK_HAZE.description": "Deal {Damage:diff()} damage.\nDouble enemy [gold]Weak[/gold].\n{DarknessIcon}: Draw 1 card for each [gold]Weak[/gold] on the enemy.",
+
+  "RIKU-DARK_ROLL.title": "Dark Roll",
+  "RIKU-DARK_ROLL.description": "Draw 1 card.\nIf it's a [gold]Dark Sleight[/gold], gain {Block:diff()} [gold]Block[/gold].\n{DarknessIcon}: Draw 2 cards instead.",
+
+  "RIKU-DASH_SLASH.title": "Dash Slash",
+  "RIKU-DASH_SLASH.description": "Deal {Damage:diff()} damage.\nDraw {Cards:diff()} {Cards:plural:card|cards}.",
+
+  "RIKU-HEAT_DIVE.title": "Heat Dive",
+  "RIKU-HEAT_DIVE.description": "Deal {Damage:diff()} damage.\nApply {VulnerablePower:diff()} [gold]Vulnerable[/gold].",
+
+  "RIKU-LIBRA.title": "Libra",
+  "RIKU-LIBRA.description": "Apply 1 [gold]Weak[/gold] and 1 [gold]Vulnerable[/gold].",
+
+  "RIKU-LIMIT_STORM.title": "Limit Storm",
+  "RIKU-LIMIT_STORM.description": "Deal {CalculatedDamage:diff()} damage to ALL enemies.\nGain {Sp:diff()} SP.\nIf you have less than or equal to 30% HP, double damage dealt and gain SP again.",
+
+  "RIKU-MISFORTUNE.title": "Misfortune",
+  "RIKU-MISFORTUNE.description": "Deal {CalculatedDamage:diff()} damage.\nDeal {ExtraDamage:diff()} additional damage for each [gold]Weak[/gold] on the enemy.",
+
+  "RIKU-SHADOW_SLIDE.title": "Shadow Slide",
+  "RIKU-SHADOW_SLIDE.description": "Gain {Block:diff()} [gold]Block[/gold].\nApply {WeakPower:diff()} [gold]Weak[/gold].",
+
+  "RIKU-SONIC_DODGE.title": "Sonic Dodge",
+  "RIKU-SONIC_DODGE.description": "Gain {Block:diff()} [gold]Block[/gold].\nNext turn, gain {Block:diff()} [gold]Block[/gold].",
+
+  "RIKU-SPARK_DIVE.title": "Spark Dive",
+  "RIKU-SPARK_DIVE.description": "Deal {Damage:diff()} damage.\nApply {WeakPower:diff()} [gold]Weak[/gold].",
+
+  "RIKU-BREAK_TIME.title": "Break Time",
+  "RIKU-BREAK_TIME.description": "Gain {Block:diff()} [gold]Block[/gold].\n[gold]Retain[/gold] your [gold]Hand[/gold] this turn.",
+
+  "RIKU-CHANNELING.title": "Channeling",
+  "RIKU-CHANNELING.description": "Add a random Power into your [gold]Hand[/gold]. It's free to play this turn.",
+
+  "RIKU-COUNTER_BLAST.title": "Counter Blast",
+  "RIKU-COUNTER_BLAST.description": "Gain {Block:diff()} [gold]Block[/gold].\nWhenever you are attacked this turn, deal {CounterBlastPower:diff()} damage to ALL enemies.",
+
+  "RIKU-DARK_BARRAGE.title": "Dark Barrage",
+  "RIKU-DARK_BARRAGE.description": "Deals {ExtraDamage:diff()} damage for each Attack played this turn.\n{DarknessIcon}: Deal double damage. {InCombat:\n(Deals {CalculatedDamage:diff()} damage)|}",
+
+  "RIKU-DARK_BARRIER.title": "Dark Barrier",
+  "RIKU-DARK_BARRIER.description": "Gain {Block:diff()} [gold]Block[/gold].\n{DarknessIcon}: Gain that much [gold]Block[/gold] again.",
+
+  "RIKU-DARK_DIVIDE.title": "Dark Divide",
+  "RIKU-DARK_DIVIDE.description": "Deal {Damage:diff()} damage to ALL enemies X times.\n{DarknessIcon}: Hit 2 additional times.",
+
+  "RIKU-DARK_IMPULSE.title": "Dark Impulse",
+  "RIKU-DARK_IMPULSE.description": "Deal {Damage:diff()} damage. \nApply {WeakPower:diff()} [gold]Weak[/gold]. \nCosts 1 less {Energy:energyIcons()} for each Attack played this turn.\n{DarknessIcon}: Double [gold]Weak[/gold] effectiveness for {AmplifyWeakPower:diff()} {AmplifyWeakPower:plural:turn|turns}.",
+
+  "RIKU-DARK_INSIGHT.title": "Dark Insight",
+  "RIKU-DARK_INSIGHT.description": "Whenever you apply [gold]Weak[/gold], draw {Cards:diff()} {Cards:plural:card|cards}.",
+
+  "RIKU-DARK_SONIC.title": "Dark Sonic",
+  "RIKU-DARK_SONIC.description": "Deal {Damage:diff()} damage and apply {VulnerablePower:diff()} [gold]Vulnerable[/gold] to ALL enemies.\n{DarknessIcon}: Double [gold]Vulnerable[/gold] effectiveness for 1 turn.",
+
+  "RIKU-FERVOR.title": "Fervor",
+  "RIKU-FERVOR.description": "At the end of your turn, play a random Attack in your [gold]Hand[/gold] against a random enemy.",
+
+  "RIKU-FIRAGA.title": "Firaga",
+  "RIKU-FIRAGA.description": "Deal {CalculatedDamage:diff()} damage to ALL enemies.\nCosts 1 less {Energy:energyIcons()} for each Skill played this turn.\n{DarknessIcon}: Deal {ExtraDamage:diff()} additional damage.",
+
+  "RIKU-HELM_SPLIT.title": "Helm Split",
+  "RIKU-HELM_SPLIT.description": "Deal {Damage:diff()} damage.\nApply {VulnerablePower:diff()} [gold]Vulnerable[/gold].\nApply {WeakPower:diff()} [gold]Weak[/gold].",
+
+  "RIKU-LIGHT_AND_DARKNESS.title": "Light and Darkness",
+  "RIKU-LIGHT_AND_DARKNESS.description": "Gain {StrengthPower:diff()} [gold]Strength[/gold].\nGain {DexterityPower:diff()} [gold]Dexterity[/gold].",
+
+  "RIKU-METEOR_CRASH.title": "Meteor Crash",
+  "RIKU-METEOR_CRASH.description": "Deal {Damage:diff()} damage.\nDouble [gold]Weak[/gold] and [gold]Vulnerable[/gold] effectiveness for {AmplifyVulnerablePower:diff()} turns.",
+
+  "RIKU-POWER_OF_DARKNESS.title": "Power of Darkness",
+  "RIKU-POWER_OF_DARKNESS.description": "Increase [gold]Darkness[/gold] damage and block gain by {PowerOfDarknessPower:diff()}.",
+
+  "RIKU-SHARP_SENSES.title": "Sharp Senses",
+  "RIKU-SHARP_SENSES.description": "Gain {DexterityPower:diff()} [gold]Dexterity[/gold].\n{DarknessIcon}: Gain 1 additional [gold]Dexterity[/gold].",
+
+  "RIKU-SIPHON_DARKNESS.title": "Siphon Darkness",
+  "RIKU-SIPHON_DARKNESS.description": "Gain {StrengthPower:diff()} [gold]Strength[/gold].\n{DarknessIcon}: Gain 1 additional [gold]Strength[/gold].",
+
+  "RIKU-SITUATION_BOOST.title": "Situation Boost",
+  "RIKU-SITUATION_BOOST.description": "Gain {SituationBoostPower:diff()} additional SP from Attacks and at the start of your turn.",
+
+  "RIKU-SLEIGHT_OF_HAND.title": "Sleight of Hand",
+  "RIKU-SLEIGHT_OF_HAND.description": "Add a random [gold]Dark Sleight[/gold] into your [gold]Hand[/gold]. \nIt's free to play this turn. \nThis card does not consume [gold]Darkness[/gold].",
+
+  "RIKU-TREASURE_MAGNET.title": "Treasure Magnet",
+  "RIKU-TREASURE_MAGNET.description": "Draw 2 cards.\nNext turn, draw 2 cards.",
+
+  "RIKU-WANDERING_SHOT.title": "Wandering Shot",
+  "RIKU-WANDERING_SHOT.description": "Deal {Damage:diff()} damage.\nThe next Attack you play costs 0 {Energy:energyIcons()}. \n{DarknessIcon}: Does not consume [gold]Darkness[/gold].",
+
+  "RIKU-WITHSTAND_COMBO.title": "Withstand Combo",
+  "RIKU-WITHSTAND_COMBO.description": "Gain {PlatingPower:diff()} [gold]Plating[/gold].",
+
+  "RIKU-BLACKOUT.title": "Blackout",
+  "RIKU-BLACKOUT.description": "Apply {WeakPower:diff()} [gold]Weak[/gold] and [gold]Vulnerable[/gold] to ALL enemies.\nDouble [gold]Weak[/gold] and [gold]Vulnerable[/gold] effectiveness for 1 turn.",
+
+  "RIKU-COMBO_MASTER.title": "Combo Master",
+  "RIKU-COMBO_MASTER.description": "ALL {IfUpgraded:show:Attacks and Skills|Attacks} in your [gold]Hand[/gold] are free to play this turn. You cannot draw additional cards this turn.",
+
+  "RIKU-CRITICAL_COUNTER.title": "Critical Counter",
+  "RIKU-CRITICAL_COUNTER.description": "Gain {Block:diff()} [gold]Block[/gold].\nBlocked attack damage is reflected to your attacker this turn.",
+
+  "RIKU-DAMAGE_CONTROL.title": "Damage Control",
+  "RIKU-DAMAGE_CONTROL.description": "Gain {Block:diff()} [gold]Block[/gold].",
+
+  "RIKU-DARK_PRESENCE.title": "Dark Presence",
+  "RIKU-DARK_PRESENCE.description": "[gold]Weak[/gold] enemies take {DarkPresencePower:diff()}% more damage.",
+
+  "RIKU-DARK_RECOVERY.title": "Dark Recovery",
+  "RIKU-DARK_RECOVERY.description": "Whenever you play a [gold]Dark Sleight[/gold], gain {DarkRecoveryPower:diff()} [gold]Block[/gold].",
+
+  "RIKU-DARK_RESONANCE.title": "Dark Resonance",
+  "RIKU-DARK_RESONANCE.description": "The first time you play a [gold]Dark Sleight[/gold] every turn, gain {DarkResonancePower:diff()} [gold]Strength[/gold].",
+
+  "RIKU-DARK_SPLICER.title": "Dark Splicer",
+  "RIKU-DARK_SPLICER.description": "Deal {Damage:diff()} damage and apply {WeakPower:diff()} [gold]Weak[/gold] to ALL enemies. \n{DarknessIcon}: Double [gold]Weak[/gold] effectiveness for {AmplifyWeak:diff()} {AmplifyWeak:plural:turn|turns}.",
+
+  "RIKU-DOOR_TO_DARKNESS.title": "Door to Darkness",
+  "RIKU-DOOR_TO_DARKNESS.description": "[gold]Exhaust[/gold] 1 card.\nGain {Energy:energyIcons()}.\nGain {StrengthPower:diff()} [gold]Strength[/gold].\nIf the Exhausted card is a [gold]Dark Sleight[/gold], gain 1 additional [gold]Strength[/gold].",
+  "RIKU-DOOR_TO_DARKNESS.selectionScreenPrompt": "Choose a card to [gold]Exhaust[/gold].",
+
+  "RIKU-SWORDPLAY.title": "Swordplay",
+  "RIKU-SWORDPLAY.description": "Gain {Block:diff()} [gold]Block[/gold].\n[gold]Upgrade[/gold] {IfUpgraded:show:ALL cards|a card} in your [gold]Hand[/gold].",
+
+  "RIKU-DOUBLEFLIGHT.title": "Doubleflight",
+  "RIKU-DOUBLEFLIGHT.description": "Gain {Block:diff()} [gold]Block[/gold].\nIf you have played a [gold]Dark Sleight[/gold] this turn, gain [gold]Block[/gold] again.",
+
+  "RIKU-TEMPTATION.title": "Temptation",
+  "RIKU-TEMPTATION.description": "Draw {Cards:diff()} {Cards:plural:card|cards}.\nDiscard all cards drawn this way that are not [gold]Dark Sleights[/gold].",
+
+  "RIKU-FLOW_MOTION.title": "Flow Motion",
+  "RIKU-FLOW_MOTION.description": "Gain {Block:diff()} [gold]Block[/gold].\nDeal damage equal to [gold]Block[/gold] gained.",
+
+  "RIKU-GUARDIAN_OF_LIGHT.title": "Guardian of Light",
+  "RIKU-GUARDIAN_OF_LIGHT.description": "Gain {Sp:diff()} SP.\nNext turn, gain {Energy:energyIcons()}.",
+
+  "RIKU-LINGERING_WILL.title": "Lingering Will",
+  "RIKU-LINGERING_WILL.description": "Whenever you apply a debuff to an enemy, they take {LingeringWillPower:diff()} damage.",
+
+  "RIKU-MARK_OF_MASTERY.title": "Mark of Mastery",
+  "RIKU-MARK_OF_MASTERY.description": "At the start of your turn, add a random card into your [gold]Hand[/gold]. It gains [gold]Ethereal[/gold].",
+
+  "RIKU-MP_HASTEGA.title": "MP Hastega",
+  "RIKU-MP_HASTEGA.description": "Gain {Energy:energyIcons()} at the start of each turn.",
+
+  "RIKU-REALITY_SHIFT.title": "Reality Shift",
+  "RIKU-REALITY_SHIFT.description": "Gain {Energy:energyIcons()}.\nGain {Sp:diff()} SP.",
+
+  "RIKU-SACRIFICE.title": "Sacrifice",
+  "RIKU-SACRIFICE.description": "Lose 3 HP.\nDeal {Damage:diff()} damage.\n{DarknessIcon}: If the enemy has [gold]Weak[/gold], hit twice.",
+
+  "RIKU-SHADOWBREAKER.title": "Shadowbreaker",
+  "RIKU-SHADOWBREAKER.description": "Deal {Damage:diff()} damage twice.\nApply {WeakPower:diff()} [gold]Weak[/gold] and [gold]Vulnerable[/gold].\n{DarknessIcon}: Next turn, return this card to your [gold]Hand[/gold].",
+
+  "RIKU-THE_CHOSEN_ONE.title": "The Chosen One",
+  "RIKU-THE_CHOSEN_ONE.description": "The first card you play each turn is [gold]free[/gold].",
+
+  "RIKU-VANISH.title": "Vanish",
+  "RIKU-VANISH.description": "Discard your [gold]Hand[/gold].\nGain [gold]Intangible[/gold].",
+
+  "RIKU-ZANTETSUKEN.title": "Zantetsuken",
+  "RIKU-ZANTETSUKEN.description": "Deal {Damage:diff()} damage.\n{DarknessIcon}: If the enemy has {hpPercent:diff()}% HP or less, kill it.",
+
+  "RIKU-RETALIATE.description": "Gain {Block:diff()} [gold]Block[/gold]. \nApply {WeakPower:diff()} [gold]Weak[/gold].",
+  "RIKU-RETALIATE.title": "Retaliate",
+
+  "RIKU-SHOWDOWN.description": "Apply {WeakPower:diff()} [gold]Weak[/gold].",
+  "RIKU-SHOWDOWN.title": "Showdown",
+
+  "RIKU-JUMP_SLASH.description": "Deal {Damage:diff()} damage. \nIf enemy is [gold]Vulnerable[/gold], apply {WeakPower:diff()} [gold]Weak[/gold]. \nIf enemy is [gold]Weak[/gold], apply {VulnerablePower:diff()} [gold]Vulnerable[/gold].",
+  "RIKU-JUMP_SLASH.title": "Jump Slash",
+
+  "RIKU-DARK_HARMONY.description": "Gain 1 [gold]Strength[/gold] for each [gold]Vulnerable[/gold] or [gold]Weak[/gold] on the enemy, whichever is higher.",
+  "RIKU-DARK_HARMONY.title": "Dark Harmony"
 }

@@ -4,12 +4,12 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using Riku.RikuCode.Powers;
 
-namespace Riku.RikuCode.Cards.Rare;
+namespace Riku.RikuCode.Cards.Uncommon;
 
 public class DarkResonance() : RikuCard(
     1,
     CardType.Power,
-    CardRarity.Rare,
+    CardRarity.Uncommon,
     TargetType.Self)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>

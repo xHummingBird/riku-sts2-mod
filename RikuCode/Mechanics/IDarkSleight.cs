@@ -1,6 +1,6 @@
 ﻿namespace Riku.RikuCode.Mechanics;
 
-public class IDarkSleight
+public interface IDarkSleight
 {
     
 }

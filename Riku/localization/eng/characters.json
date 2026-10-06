@@ -1,3 +1,16 @@
 {
-  
+  "RIKU-RIKU.aromaPrinciple": "One who walks the path between light and darkness, having accepted both as part of his heart.",
+  "RIKU-RIKU.banter.alive.endTurnPing": "Let's keep moving.",
+  "RIKU-RIKU.banter.dead.endTurnPing": "I'm counting on you.",
+  "RIKU-RIKU.cardsModifierDescription": "Riku cards will now appear in rewards and shops.",
+  "RIKU-RIKU.cardsModifierTitle": "Riku Cards",
+  "RIKU-RIKU.description": "A Keyblade Master who has embraced both light and darkness. Build Situation Points to unlock powerful commands, harness Darkness, and unleash devastating finishers.",
+  "RIKU-RIKU.eventDeathPrevention": "My story doesn't end here!",
+  "RIKU-RIKU.goldMonologue": "This should come in handy.",
+  "RIKU-RIKU.possessiveAdjective": "his",
+  "RIKU-RIKU.pronounObject": "him",
+  "RIKU-RIKU.pronounPossessive": "his",
+  "RIKU-RIKU.pronounSubject": "he",
+  "RIKU-RIKU.title": "Keyblade Master Riku",
+  "RIKU-RIKU.titleObject": "Keyblade Master Riku"
 }

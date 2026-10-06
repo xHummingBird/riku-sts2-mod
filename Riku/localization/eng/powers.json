@@ -1,3 +1,69 @@
 {
+  "RIKU-DARK_MASTERY_POWER.description": "Apply [purple]Darkness[/purple] Bonus for 3 turns.",
+  "RIKU-DARK_MASTERY_POWER.smartDescription": "Apply [purple]Darkness[/purple] Bonus for {Amount} turns. You lose all [gold]SP[/gold] when Dark Mastery ends.",
+  "RIKU-DARK_MASTERY_POWER.title": "Dark Mastery",
   
+  "RIKU-DARKNESS_POWER.description": "The next Attack or Skill card gain 2 damage and 2 [gold]Block[/gold].",
+  "RIKU-DARKNESS_POWER.smartDescription": "The next Attack or Skill card gain {Amount} damage and {Amount} [gold]Block[/gold].",
+  "RIKU-DARKNESS_POWER.title": "Channel Darkness",
+
+  "RIKU-DARK_INSIGHT_POWER.description": "Whenever you apply [gold]Weak[/gold], draw a card.",
+  "RIKU-DARK_INSIGHT_POWER.smartDescription": "Whenever you apply [gold]Weak[/gold], draw [blue]{Amount}[/blue] {Amount:plural:card|cards}.",
+  "RIKU-DARK_INSIGHT_POWER.title": "Dark Insight",
+
+  "RIKU-DARK_PRESENCE_POWER.description": "[gold]Weak[/gold] enemies take additional damage.",
+  "RIKU-DARK_PRESENCE_POWER.smartDescription": "[gold]Weak[/gold] enemies take [blue]{Amount}%[/blue] more damage.",
+  "RIKU-DARK_PRESENCE_POWER.title": "Dark Presence",
+
+  "RIKU-DARK_RECOVERY_POWER.description": "Whenever you play a [gold]Dark Sleight[/gold], gain [gold]Block[/gold].",
+  "RIKU-DARK_RECOVERY_POWER.smartDescription": "Whenever you play a [gold]Dark Sleight[/gold], gain [blue]{Amount}[/blue] [gold]Block[/gold].",
+  "RIKU-DARK_RECOVERY_POWER.title": "Dark Recovery",
+
+  "RIKU-FERVOR_POWER.description": "At the end of your turn, a random Attack in your [gold]Hand[/gold] is played against a random enemy.",
+  "RIKU-FERVOR_POWER.smartDescription": "At the end of your turn, [blue]{Amount}[/blue] random {Amount:plural:Attack in your [gold]Hand[/gold] is played against a random enemy.|Attacks in your [gold]Hand[/gold] are played against random enemies.}",
+  "RIKU-FERVOR_POWER.title": "Fervor",
+
+  "RIKU-DARK_RESONANCE_POWER.description": "The first time you play you play a [gold]Dark Sleight[/gold] every turn, gain [gold]Strength[/gold].",
+  "RIKU-DARK_RESONANCE_POWER.smartDescription": "The first time you play a [gold]Dark Sleight[/gold] every turn, gain [blue]{Amount}[/blue] [gold]Strength[/gold].",
+  "RIKU-DARK_RESONANCE_POWER.title": "Dark Resonance",
+
+  "RIKU-LINGERING_WILL_POWER.description": "Whenever you apply a debuff to an enemy, they take damage.",
+  "RIKU-LINGERING_WILL_POWER.smartDescription": "Whenever you apply a debuff to an enemy, they take [blue]{Amount}[/blue] damage.",
+  "RIKU-LINGERING_WILL_POWER.title": "Lingering Will",
+
+  "RIKU-MARK_OF_MASTERY_POWER.description": "At the start of your turn, add a random card into your [gold]Hand[/gold]. It gains [gold]Ethereal[/gold].",
+  "RIKU-MARK_OF_MASTERY_POWER.smartDescription": "At the start of your turn, add [blue]{Amount}[/blue] random {Amount:plural:card|cards} into your [gold]Hand[/gold]. {Amount:plural:It gains|They gain} [gold]Ethereal[/gold].",
+  "RIKU-MARK_OF_MASTERY_POWER.title": "Mark of Mastery",
+
+  "RIKU-MP_HASTEGA_POWER.description": "Gain [gold]Energy[/gold] at the start of each turn.",
+  "RIKU-MP_HASTEGA_POWER.smartDescription": "Gain {Amount:energyIcons()} at the start of each turn.",
+  "RIKU-MP_HASTEGA_POWER.title": "MP Hastega",
+
+  "RIKU-POWER_OF_DARKNESS_POWER.description": "Increase [purple]Darkness[/purple] damage and block gain.",
+  "RIKU-POWER_OF_DARKNESS_POWER.smartDescription": "Increase [purple]Darkness[/purple] damage and block gain by [blue]{Amount}[/blue].",
+  "RIKU-POWER_OF_DARKNESS_POWER.title": "Power of Darkness",
+
+  "RIKU-THE_CHOSEN_ONE_POWER.description": "The first card you play each turn is free to play.",
+  "RIKU-THE_CHOSEN_ONE_POWER.smartDescription": "The first {Amount:plural:card|[blue]{}[/blue] cards} you play each turn {Amount:plural:is|are} free to play.",
+  "RIKU-THE_CHOSEN_ONE_POWER.title": "The Chosen One",
+
+  "RIKU-SITUATION_BOOST_POWER.description": "Gain additional SP from Attacks and at the start of your turn.",
+  "RIKU-SITUATION_BOOST_POWER.smartDescription": "Gain [blue]{Amount}[/blue] additional SP from Attacks and at the start of your turn.",
+  "RIKU-SITUATION_BOOST_POWER.title": "Situation Boost",
+
+  "RIKU-AMPLIFY_WEAK_POWER.description": "Weak is twice as effective.",
+  "RIKU-AMPLIFY_WEAK_POWER.smartDescription": "[gold]Weak[/gold] is twice as effective {Amount:plural:this turn|for the next [blue]{}[/blue] turns}.",
+  "RIKU-AMPLIFY_WEAK_POWER.title": "Amplify Weak",
+
+  "RIKU-AMPLIFY_VULNERABLE_POWER.description": "Vulnerable is twice as effective.",
+  "RIKU-AMPLIFY_VULNERABLE_POWER.smartDescription": "[gold]Vulnerable[/gold] is twice as effective {Amount:plural:this turn|for the next [blue]{}[/blue] turns}.",
+  "RIKU-AMPLIFY_VULNERABLE_POWER.title": "Amplify Vulnerable",
+
+  "RIKU-COUNTER_BLAST_POWER.description": "Whenever you are attacked, deal damage to ALL enemies.",
+  "RIKU-COUNTER_BLAST_POWER.smartDescription": "Whenever you are attacked, deal [blue]{Amount}[/blue] damage to ALL enemies.",
+  "RIKU-COUNTER_BLAST_POWER.title": "Counter Blast",
+
+  "RIKU-CRITICAL_COUNTER_POWER.description": "Blocked attack damage is reflected to your attacker.",
+  "RIKU-CRITICAL_COUNTER_POWER.smartDescription": "Blocked attack damage is reflected to your attacker.",
+  "RIKU-CRITICAL_COUNTER_POWER.title": "Critical Counter"
 }

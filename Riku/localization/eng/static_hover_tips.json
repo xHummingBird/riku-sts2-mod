@@ -1,3 +1,16 @@
 {
+  "RIKU_SP.title": "SP (Situation Points)",
+  "RIKU_SP.description": "Current: [gold]%SP%[/gold] / %MAXSP% SP.\n\nGain [gold]1 SP[/gold] at the start of each turn. Attacks grant [gold]2 SP[/gold]. Dark Sleights grant [gold]3 SP[/gold].\n\nAt [gold]30 SP[/gold], gain [purple]Dark Mastery[/purple] for 4 turns, and add a [gold]Situation Command[/gold] into your Hand.",
+
+  "RIKU_DARKNESS.title": "Darkness",
+  "RIKU_DARKNESS.description": "Charge [purple]Darkness[/purple] by playing [gold]3 Attacks[/gold].\n\nWhen you have [purple]Darkness[/purple], your next Attack or Skill gains [gold]+2 Damage[/gold] and [green]+2 Block[/green], and Dark Sleights gain additional effects.",
+
+  "RIKU_DARK_MASTERY.title": "Dark Mastery",
+  "RIKU_DARK_MASTERY.description": "Riku has fully controlled the power of darkness.\n\nGain the benefits of Darkness automatically.\n\nAccumulate [gold]30 SP[/gold] to gain stronger Situation Commands.",
+
+  "RIKU_SITUATION_COMMAND.title": "Situation Command",
+  "RIKU_SITUATION_COMMAND.description": "Special Commands that become available at key moments during combat.\n\nReach [gold]30 SP[/gold] to gain a Situation Command.\n\nWhile in [purple]Dark Mastery[/purple], accumulating another [gold]30 SP[/gold] grants access to stronger Situation Commands.\n\nUsing a Situation Command consumes it and resets your SP.",
   
+  "RIKU_DARK_SLEIGHT.title": "Dark Sleight",
+  "RIKU_DARK_SLEIGHT.description": "Dark Sleights grant [gold]3 SP[/gold] when played.\n\nWhile you have [purple]Darkness[/purple] or [gold]Dark Mastery[/gold], Dark Sleights gain additional effects."
 }

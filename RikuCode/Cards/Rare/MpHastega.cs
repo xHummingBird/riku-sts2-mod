@@ -15,7 +15,8 @@ public class MpHastega() : RikuCard(
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DynamicVar("MpHastega", 1)
+        new DynamicVar("MpHastega", 1),
+        new EnergyVar(1)
     ];
 
     protected override async Task OnPlay(
@@ -33,5 +34,6 @@ public class MpHastega() : RikuCard(
     protected override void OnUpgrade()
     {
         DynamicVars["MpHastega"].UpgradeValueBy(1);
+        DynamicVars.Energy.UpgradeValueBy(1);
     }
 }

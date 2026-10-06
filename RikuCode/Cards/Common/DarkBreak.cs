@@ -3,17 +3,18 @@ using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.Extensions;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
-using MegaCrit.Sts2.Core.Models.Powers;
+using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Runs;
 using MegaCrit.Sts2.Core.ValueProps;
 using Riku.RikuCode.Extensions;
 using Riku.RikuCode.Mechanics;
 using Riku.RikuCode.Powers;
 
-namespace Riku.RikuCode.Cards.Uncommon;
+namespace Riku.RikuCode.Cards.Common;
 
 public class DarkBreak() : RikuCard(0, CardType.Attack,
     CardRarity.Uncommon, TargetType.AnyEnemy), IDarkSleight
@@ -28,8 +29,8 @@ public class DarkBreak() : RikuCard(0, CardType.Attack,
     
     protected override IEnumerable<DynamicVar> CanonicalVars => 
     [
-        new DamageVar(5, ValueProp.Move),
-        new EnergyVar(1)
+        new DamageVar(4, ValueProp.Move),
+        new CardsVar(1)
     ];
     
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
@@ -77,8 +78,37 @@ public class DarkBreak() : RikuCard(0, CardType.Attack,
         }
 
         if (ownerCreature.HasPower<DarknessPower>() || ownerCreature.HasPower<DarkMasteryPower>())
-            await PlayerCmd.GainEnergy(1, Owner);
+        {
+            if (ownerCreature.HasPower<DarknessPower>())
+            {
+                var relic = DarknessHelper.GetRelic(Owner);
+                if (relic != null)
+                {
+                    await relic.ConsumeDarkness(choiceContext);
+                }
+            }
 
+            CardModel? attack = PileType.Draw.GetPile(Owner).Cards
+                .Where(c =>
+                    c.Type == CardType.Attack &&
+                    !c.Keywords.Contains(CardKeyword.Unplayable))
+                .ToList()
+                .StableShuffle(Owner.RunState.Rng.Shuffle)
+                .FirstOrDefault();
+
+            if (attack != null)
+            {
+                if (IsUpgraded)
+                {
+                    CardCmd.Upgrade(attack);
+                }
+                await CardCmd.AutoPlay(
+                    choiceContext,
+                    attack,
+                    null
+                );
+            }
+        }
     }
     
     protected override void OnUpgrade()

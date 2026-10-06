@@ -6,7 +6,7 @@ using MegaCrit.Sts2.Core.Models;
 
 namespace Riku.RikuCode.Cards.Uncommon;
 
-public class Channelling() : RikuCard(1, CardType.Skill,
+public class Channeling() : RikuCard(1, CardType.Skill,
     CardRarity.Uncommon, TargetType.Self)
 {
     public override IEnumerable<CardKeyword> CanonicalKeywords =>

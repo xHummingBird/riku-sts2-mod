@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cpv7rnbgb54dx"
+path="res://.godot/imported/riku_atk (1).wav-52cdc9ad33d3c4ba7e99ba3157e2c493.sample"
+
+[deps]
+
+source_file="res://Riku/sounds/riku_atk (1).wav"
+dest_files=["res://.godot/imported/riku_atk (1).wav-52cdc9ad33d3c4ba7e99ba3157e2c493.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

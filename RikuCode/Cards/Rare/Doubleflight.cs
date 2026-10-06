@@ -4,6 +4,7 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.ValueProps;
+using Riku.RikuCode.Mechanics;
 
 namespace Riku.RikuCode.Cards.Rare;
 
@@ -17,7 +18,7 @@ public class Doubleflight() : RikuCard(1, CardType.Skill,
             e =>
                 e.HappenedThisTurn(CombatState) &&
                 e.CardPlay.Card.Owner == Owner &&
-                e.CardPlay.Card.Type == CardType.Attack);
+                e.CardPlay.Card is IDarkSleight);
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [

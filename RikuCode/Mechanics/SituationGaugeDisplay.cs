@@ -1,6 +1,590 @@
-﻿namespace Riku.RikuCode.Mechanics;
+﻿using Godot;
+using HarmonyLib;
+using MegaCrit.Sts2.Core.Combat;
+using MegaCrit.Sts2.Core.Context;
+using MegaCrit.Sts2.Core.Entities.Players;
+using MegaCrit.Sts2.Core.HoverTips;
+using MegaCrit.Sts2.Core.Nodes.Combat;
+using MegaCrit.Sts2.Core.Nodes.HoverTips;
+using Riku.RikuCode.Extensions;
+using Riku.RikuCode.Relics;
 
-public class SituationGaugeDIsplay
+namespace Riku.RikuCode.Mechanics;
+
+public partial class SituationGaugeDisplay : Control
 {
-    
+    public static SituationGaugeDisplay? Instance { get; private set; }
+
+    private Control? _display;
+
+    private TextureRect? _bar1;
+    private TextureRect? _bar2;
+    private TextureRect? _bar3;
+
+    private Player? _player;
+
+    private int _lastProgress = -1;
+
+    private int _lastBar1Amount = -1;
+    private int _lastBar2Amount = -1;
+    private int _lastBar3Amount = -1;
+
+    private Tween? _bar1Tween;
+    private Tween? _bar2Tween;
+    private Tween? _bar3Tween;
+
+    private IHoverTip? _hoverTip;
+
+    private Control? _activeTip;
+
+    private List<RikuHoverTipText.TextTarget> _tipTextTargets = [];
+
+    private int _renderedTipSp = int.MinValue;
+    private int _renderedTipMaxSp = int.MinValue;
+
+    public override void _Ready()
+    {
+        Instance = this;
+
+        Name = "SituationGaugeDisplay";
+
+        MouseFilter =
+            MouseFilterEnum.Pass;
+
+        CallDeferred(nameof(Setup));
+    }
+
+    private async void Setup()
+    {
+        if (!IsInsideTree())
+            return;
+
+        for (int i = 0; i < 60; i++)
+        {
+            var state =
+                CombatManager.Instance?.DebugOnlyGetState();
+
+            var player =
+                state?.Players.FirstOrDefault(
+                    p => LocalContext.IsMe(p));
+
+            if (player != null)
+            {
+                if (player.Character is not Character.Riku)
+                {
+                    QueueFree();
+                    return;
+                }
+
+                _player = player;
+                break;
+            }
+
+            var tree = GetTree();
+
+            if (tree == null)
+                return;
+
+            await ToSignal(
+                tree,
+                SceneTree.SignalName.ProcessFrame);
+        }
+
+        if (_player == null)
+        {
+            QueueFree();
+            return;
+        }
+
+        var scene =
+            GD.Load<PackedScene>(
+                "res://Riku/scenes/situation_display.tscn");
+
+        if (scene == null)
+        {
+            GD.PushError(
+                "[Riku Situation] Failed to load situation_display.tscn");
+
+            QueueFree();
+            return;
+        }
+
+        _display =
+            scene.Instantiate<Control>();
+
+        AddChild(_display);
+
+        _hoverTip =
+            RikuStaticHoverTips.SP;
+
+        _display.MouseFilter =
+            MouseFilterEnum.Pass;
+
+        _display.MouseEntered +=
+            OnHovered;
+
+        _display.MouseExited +=
+            OnUnhovered;
+
+        _display.SetAnchorsPreset(
+            LayoutPreset.BottomLeft);
+
+        /*
+         * Tweak this position after placing
+         * Riku's HUD assets.
+         */
+        _display.Position =
+            new Vector2(
+                -115,
+                -140);
+
+        _bar1 =
+            _display.GetNodeOrNull<TextureRect>(
+                "bar1");
+
+        _bar2 =
+            _display.GetNodeOrNull<TextureRect>(
+                "bar2");
+
+        _bar3 =
+            _display.GetNodeOrNull<TextureRect>(
+                "bar3");
+
+        if (_bar1 == null ||
+            _bar2 == null ||
+            _bar3 == null)
+        {
+            GD.PushError(
+                "[Riku Situation] situation_display.tscn must contain bar1, bar2, and bar3.");
+
+            QueueFree();
+            return;
+        }
+
+        /*
+         * Scaling should originate from the centre
+         * of each gauge segment.
+         */
+        _bar1.PivotOffset =
+            _bar1.Size / 2f;
+
+        _bar2.PivotOffset =
+            _bar2.Size / 2f;
+
+        _bar3.PivotOffset =
+            _bar3.Size / 2f;
+
+        ResetDisplayState();
+
+        UpdateDisplay();
+    }
+
+    public override void _Process(
+        double delta)
+    {
+        UpdateDisplay();
+        RenderTipValues();
+    }
+
+    private void OnHovered()
+    {
+        if (_display == null ||
+            _hoverTip == null)
+        {
+            return;
+        }
+
+        NHoverTipSet.Clear();
+
+        var tip =
+            NHoverTipSet.CreateAndShow(
+                _display,
+                _hoverTip);
+
+        if (tip == null)
+            return;
+
+        tip.GlobalPosition =
+            _display.GlobalPosition +
+            new Vector2(
+                40f,
+                -440f);
+
+        tip.MouseFilter =
+            MouseFilterEnum.Ignore;
+
+        TrackTip(tip);
+    }
+
+    private void OnUnhovered()
+    {
+        if (_display != null)
+        {
+            NHoverTipSet.Remove(_display);
+        }
+
+        ForgetTip();
+    }
+
+    private void TrackTip(
+        Control tip)
+    {
+        _activeTip = tip;
+
+        _tipTextTargets =
+            RikuHoverTipText.CollectTargets(tip);
+
+        _renderedTipSp =
+            int.MinValue;
+
+        _renderedTipMaxSp =
+            int.MinValue;
+
+        RenderTipValues();
+
+        /*
+         * Hover-tip labels may be populated one
+         * frame after the tip is created.
+         */
+        Callable.From(() =>
+        {
+            if (_activeTip != tip)
+                return;
+
+            if (!IsInstanceValid(tip))
+                return;
+
+            if (_tipTextTargets.Count == 0)
+            {
+                _tipTextTargets =
+                    RikuHoverTipText.CollectTargets(tip);
+            }
+
+            RenderTipValues();
+        }).CallDeferred();
+    }
+
+    private void ForgetTip()
+    {
+        _activeTip = null;
+
+        _tipTextTargets = [];
+
+        _renderedTipSp =
+            int.MinValue;
+
+        _renderedTipMaxSp =
+            int.MinValue;
+    }
+
+    private void RenderTipValues()
+    {
+        if (_activeTip == null)
+            return;
+
+        if (!IsInstanceValid(_activeTip))
+        {
+            ForgetTip();
+            return;
+        }
+
+        if (_tipTextTargets.Count == 0)
+            return;
+
+        var relic =
+            _player?.Relics
+                .OfType<RikuSituationRelicBase>()
+                .FirstOrDefault();
+
+        if (relic == null)
+            return;
+
+        int situationPoints =
+            relic.GetSituationPointsForUI();
+
+        int maxSituationPoints =
+            relic.GetMaxSituationPointsForUI();
+
+        if (situationPoints == _renderedTipSp &&
+            maxSituationPoints == _renderedTipMaxSp)
+        {
+            return;
+        }
+
+        _renderedTipSp =
+            situationPoints;
+
+        _renderedTipMaxSp =
+            maxSituationPoints;
+
+        RikuHoverTipText.Render(
+            _tipTextTargets,
+            situationPoints,
+            maxSituationPoints);
+    }
+
+    private void UpdateDisplay()
+    {
+        if (_player == null)
+            return;
+
+        if (_bar1 == null ||
+            _bar2 == null ||
+            _bar3 == null)
+        {
+            return;
+        }
+
+        var relic =
+            _player.Relics
+                .OfType<RikuSituationRelicBase>()
+                .FirstOrDefault();
+
+        if (relic == null)
+        {
+            SetGaugeProgress(0);
+            return;
+        }
+
+        int progress =
+            Mathf.Clamp(
+                relic.GetArrowProgressForUI(),
+                0,
+                30);
+
+        if (progress == _lastProgress)
+            return;
+
+        SetGaugeProgress(progress);
+    }
+
+    private void SetGaugeProgress(
+        int progress)
+    {
+        _lastProgress =
+            progress;
+
+        SetArrow(
+            _bar1!,
+            progress,
+            ref _lastBar1Amount,
+            ref _bar1Tween);
+
+        SetArrow(
+            _bar2!,
+            progress - 10,
+            ref _lastBar2Amount,
+            ref _bar2Tween);
+
+        SetArrow(
+            _bar3!,
+            progress - 20,
+            ref _lastBar3Amount,
+            ref _bar3Tween);
+    }
+
+    private void SetArrow(
+        TextureRect arrow,
+        int amount,
+        ref int lastAmount,
+        ref Tween? tween)
+    {
+        amount =
+            Mathf.Clamp(
+                amount,
+                0,
+                10);
+
+        float targetScale =
+            GetArrowScale(amount);
+
+        bool increased =
+            lastAmount >= 0 &&
+            amount > lastAmount;
+
+        bool changed =
+            amount != lastAmount;
+
+        lastAmount =
+            amount;
+
+        if (!changed)
+            return;
+
+        tween?.Kill();
+        tween = null;
+
+        arrow.PivotOffset =
+            arrow.Size / 2f;
+
+        if (!increased)
+        {
+            arrow.Scale =
+                new Vector2(
+                    targetScale,
+                    targetScale);
+
+            return;
+        }
+
+        PulseArrow(
+            arrow,
+            targetScale,
+            ref tween);
+    }
+
+    private void PulseArrow(
+        TextureRect arrow,
+        float targetScale,
+        ref Tween? tween)
+    {
+        float pulseScale =
+            targetScale + 0.35f;
+
+        arrow.Scale =
+            new Vector2(
+                targetScale,
+                targetScale);
+
+        tween =
+            CreateTween();
+
+        tween.TweenProperty(
+                arrow,
+                "scale",
+                new Vector2(
+                    pulseScale,
+                    pulseScale),
+                0.04f)
+            .SetEase(
+                Tween.EaseType.Out);
+
+        tween.TweenProperty(
+                arrow,
+                "scale",
+                new Vector2(
+                    targetScale,
+                    targetScale),
+                0.14f)
+            .SetTrans(
+                Tween.TransitionType.Back)
+            .SetEase(
+                Tween.EaseType.Out);
+    }
+
+    private static float GetArrowScale(
+        int amount)
+    {
+        amount =
+            Mathf.Clamp(
+                amount,
+                0,
+                10);
+
+        if (amount <= 0)
+            return 0f;
+
+        /*
+         * 1 SP  = 0.55
+         * 10 SP = 1.00
+         */
+        return Mathf.Lerp(
+            0.55f,
+            1f,
+            (amount - 1) / 9f);
+    }
+
+    private void ResetDisplayState()
+    {
+        _lastProgress = -1;
+
+        _lastBar1Amount = -1;
+        _lastBar2Amount = -1;
+        _lastBar3Amount = -1;
+
+        _bar1Tween?.Kill();
+        _bar2Tween?.Kill();
+        _bar3Tween?.Kill();
+
+        _bar1Tween = null;
+        _bar2Tween = null;
+        _bar3Tween = null;
+
+        if (_bar1 != null)
+            _bar1.Scale = Vector2.Zero;
+
+        if (_bar2 != null)
+            _bar2.Scale = Vector2.Zero;
+
+        if (_bar3 != null)
+            _bar3.Scale = Vector2.Zero;
+    }
+
+    public override void _ExitTree()
+    {
+        if (Instance == this)
+            Instance = null;
+
+        _bar1Tween?.Kill();
+        _bar2Tween?.Kill();
+        _bar3Tween?.Kill();
+
+        _bar1Tween = null;
+        _bar2Tween = null;
+        _bar3Tween = null;
+
+        if (_display != null)
+        {
+            NHoverTipSet.Remove(_display);
+        }
+
+        ForgetTip();
+
+        _hoverTip = null;
+        _player = null;
+
+        _bar1 = null;
+        _bar2 = null;
+        _bar3 = null;
+
+        _display = null;
+    }
+}
+
+[HarmonyPatch(
+    typeof(NEnergyCounter),
+    nameof(NEnergyCounter._Ready))]
+public static class SituationGaugeDisplayOverlayPatch
+{
+    public static void Postfix(
+        NEnergyCounter __instance)
+    {
+        if (__instance == null)
+            return;
+
+        if (!GodotObject.IsInstanceValid(__instance))
+            return;
+
+        var state =
+            CombatManager.Instance?.DebugOnlyGetState();
+
+        var player =
+            state?.Players.FirstOrDefault(
+                p => LocalContext.IsMe(p));
+
+        if (player?.Character is not Character.Riku)
+            return;
+
+        if (__instance.GetNodeOrNull<SituationGaugeDisplay>(
+                "SituationGaugeDisplay") != null)
+        {
+            return;
+        }
+
+        __instance.AddChild(
+            new SituationGaugeDisplay
+            {
+                Name = "SituationGaugeDisplay"
+            });
+    }
 }

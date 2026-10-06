@@ -6,7 +6,7 @@ using Riku.RikuCode.Powers;
 
 namespace Riku.RikuCode.Cards.Rare;
 
-public class LingeringSentiment() : RikuCard(
+public class LingeringWill() : RikuCard(
     2,
     CardType.Power,
     CardRarity.Rare,
@@ -14,23 +14,23 @@ public class LingeringSentiment() : RikuCard(
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new PowerVar<LingeringSentimentPower>(8m)
+        new PowerVar<LingeringWillPower>(8m)
     ];
 
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
-        await PowerCmd.Apply<LingeringSentimentPower>(
+        await PowerCmd.Apply<LingeringWillPower>(
             choiceContext,
             Owner.Creature,
-            DynamicVars["LingeringSentimentPower"].BaseValue,
+            DynamicVars["LingeringWillPower"].BaseValue,
             Owner.Creature,
             this);
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars["LingeringSentimentPower"].UpgradeValueBy(4m);
+        DynamicVars["LingeringWillPower"].UpgradeValueBy(4m);
     }
 }

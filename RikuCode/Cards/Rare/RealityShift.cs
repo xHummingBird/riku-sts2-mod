@@ -12,7 +12,12 @@ public class RealityShift() : RikuCard(0, CardType.Skill,
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new EnergyVar(2),
-        new DynamicVar("Sp", 10)
+        new DynamicVar("Sp", 8)
+    ];
+    
+    public override IEnumerable<CardKeyword> CanonicalKeywords =>
+    [
+        CardKeyword.Exhaust
     ];
 
     protected override async Task OnPlay(
@@ -32,6 +37,6 @@ public class RealityShift() : RikuCard(0, CardType.Skill,
     protected override void OnUpgrade()
     {
         DynamicVars.Energy.UpgradeValueBy(1);
-        DynamicVars["Sp"].UpgradeValueBy(5);
+        DynamicVars["Sp"].UpgradeValueBy(3);
     }
 }

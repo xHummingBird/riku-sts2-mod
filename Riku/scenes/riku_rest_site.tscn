@@ -1,0 +1,137 @@
+[gd_scene load_steps=11 format=3 uid="uid://bq476jsjbtg4h"]
+
+[ext_resource type="Script" uid="uid://bulunsh3eiivq" path="res://RikuCode/Nodes/RikuNRestSiteCharacter.cs" id="1_nsbi6"]
+[ext_resource type="Texture2D" uid="uid://caisw8yn1ieq5" path="res://Riku/images/spritesheets/idle/00_idle.png" id="1_pxt6h"]
+[ext_resource type="Texture2D" uid="uid://dxja7r24h2uth" path="res://Riku/images/spritesheets/idle/01_idle.png" id="2_nsbi6"]
+[ext_resource type="Texture2D" uid="uid://cgrt01j0q003j" path="res://Riku/images/spritesheets/idle/02_idle.png" id="3_t27ad"]
+[ext_resource type="Texture2D" uid="uid://d1ybuxrn3lny6" path="res://Riku/images/spritesheets/idle/03_idle.png" id="5_0xxx0"]
+[ext_resource type="PackedScene" uid="uid://5fkryglj1k0e" path="res://Riku/scenes/selection_reticle.tscn" id="5_t27ad"]
+[ext_resource type="Texture2D" uid="uid://c42f6aqhtvsy0" path="res://Riku/images/spritesheets/shadow.png" id="6_at624"]
+
+[sub_resource type="Animation" id="Animation_ebjc6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_pxt6h")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Shadow:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+
+[sub_resource type="Animation" id="Animation_xu5ug"]
+resource_name = "rest_site"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("1_pxt6h"), ExtResource("2_nsbi6"), ExtResource("3_t27ad"), ExtResource("5_0xxx0")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Shadow:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("6_at624")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qe8jq"]
+_data = {
+&"RESET": SubResource("Animation_ebjc6"),
+&"rest_site": SubResource("Animation_xu5ug")
+}
+
+[node name="RikuRestSite" type="Node2D"]
+scale = Vector2(1.75, 1.75)
+script = ExtResource("1_nsbi6")
+
+[node name="Shadow" type="Sprite2D" parent="."]
+position = Vector2(142.85713, 118.85713)
+scale = Vector2(0.99999994, 0.99999994)
+
+[node name="Visuals" type="Sprite2D" parent="."]
+position = Vector2(139.42854, -1.1428571)
+scale = Vector2(-1, 1)
+texture = ExtResource("1_pxt6h")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Visuals")
+libraries = {
+&"": SubResource("AnimationLibrary_qe8jq")
+}
+autoplay = "rest_site"
+
+[node name="ControlRoot" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SelectionReticle" parent="ControlRoot" instance=ExtResource("5_t27ad")]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0710001
+anchor_top = -3.8500001
+anchor_right = 6.3290005
+anchor_bottom = 3.5860002
+offset_left = 0.017139435
+offset_right = -0.017181396
+offset_bottom = -0.011474609
+
+[node name="Hitbox" type="Control" parent="ControlRoot"]
+unique_name_in_owner = true
+layout_mode = 1
+anchor_left = 0.82900006
+anchor_top = -3.9500003
+anchor_right = 6.729
+anchor_bottom = 3.6000001
+offset_left = -0.01714325
+offset_top = 1.5258789e-05
+offset_right = -0.017150879
+offset_bottom = -3.0517578e-05
+
+[node name="ThoughtBubbleRight" type="Control" parent="ControlRoot"]
+unique_name_in_owner = true
+anchors_preset = 0
+offset_left = 195.0
+offset_top = -93.0
+offset_right = 195.0
+offset_bottom = -93.0
+
+[node name="ThoughtBubbleLeft" type="Control" parent="ControlRoot"]
+unique_name_in_owner = true
+anchors_preset = 0
+offset_left = 82.0
+offset_top = -93.0
+offset_right = 82.0
+offset_bottom = -93.0

@@ -1,6 +1,8 @@
-﻿namespace Riku.RikuCode.Nodes;
+﻿using MegaCrit.Sts2.Core.Nodes.Combat;
 
-public class NRiku
+namespace Riku.RikuCode.Nodes;
+
+public partial class NRiku : NCreatureVisuals
 {
     
 }

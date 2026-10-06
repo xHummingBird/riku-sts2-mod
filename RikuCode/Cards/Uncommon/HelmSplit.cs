@@ -32,7 +32,7 @@ public class HelmSplit() : RikuCard(2, CardType.Attack,
         CardPlay play)
     {
         var ownerCreature = Owner?.Creature;
-
+        CenterCardCinematic.Start(RunManager.Instance.NetService.NetId);
         if (ownerCreature != null && Owner?.Character is Character.Riku riku)
         {
             AudioHelper.PlayRandomFinalAttack();

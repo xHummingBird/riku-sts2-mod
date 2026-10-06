@@ -1,6 +1,8 @@
-﻿namespace Riku.RikuCode.Nodes;
+﻿using MegaCrit.Sts2.Core.Nodes.Screens.Shops;
 
-public class RikuNMerchantCharacter
+namespace Riku.RikuCode.Nodes;
+
+public partial class RikuNMerchantCharacter : NMerchantCharacter
 {
     
 }

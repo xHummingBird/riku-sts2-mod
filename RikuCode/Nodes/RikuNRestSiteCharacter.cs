@@ -1,6 +1,8 @@
-﻿namespace Riku.RikuCode.Nodes;
+﻿using MegaCrit.Sts2.Core.Nodes.RestSite;
 
-public class RikuNRestSiteCharacter
+namespace Riku.RikuCode.Nodes;
+
+public partial class RikuNRestSiteCharacter : NRestSiteCharacter
 {
     
 }

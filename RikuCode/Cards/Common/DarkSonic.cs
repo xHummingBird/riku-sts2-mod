@@ -12,7 +12,7 @@ using Riku.RikuCode.Extensions;
 using Riku.RikuCode.Mechanics;
 using Riku.RikuCode.Powers;
 
-namespace Riku.RikuCode.Cards.Uncommon;
+namespace Riku.RikuCode.Cards.Common;
 
 public class DarkSonic() : RikuCard(
     1,
@@ -22,7 +22,7 @@ public class DarkSonic() : RikuCard(
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(8, ValueProp.Move),
+        new DamageVar(6, ValueProp.Move),
         new PowerVar<VulnerablePower>(1),
         new DynamicVar("AmplifyVulnerable", 1)
     ];
@@ -87,6 +87,5 @@ public class DarkSonic() : RikuCard(
     {
         DynamicVars.Damage.UpgradeValueBy(3);
         DynamicVars.Vulnerable.UpgradeValueBy(1);
-        DynamicVars["AmplifyVulnerable"].UpgradeValueBy(1);
     }
 }

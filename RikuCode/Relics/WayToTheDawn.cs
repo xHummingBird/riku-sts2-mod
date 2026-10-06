@@ -1,6 +1,8 @@
-﻿namespace Riku.RikuCode.Relics;
+﻿using MegaCrit.Sts2.Core.Entities.Relics;
 
-public class WayToTheDawn
+namespace Riku.RikuCode.Relics;
+
+public class WayToTheDawn : RikuRelic
 {
-    
+    public override RelicRarity Rarity => RelicRarity.Uncommon;
 }

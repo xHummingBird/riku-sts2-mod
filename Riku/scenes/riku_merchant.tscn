@@ -1,0 +1,90 @@
+[gd_scene load_steps=10 format=3 uid="uid://6d8u4vco08ol"]
+
+[ext_resource type="Texture2D" uid="uid://caisw8yn1ieq5" path="res://Riku/images/spritesheets/idle/00_idle.png" id="1_6v7gg"]
+[ext_resource type="Script" uid="uid://l3la5occm8ud" path="res://RikuCode/Nodes/RikuNMerchantCharacter.cs" id="1_s1ocr"]
+[ext_resource type="Texture2D" uid="uid://dxja7r24h2uth" path="res://Riku/images/spritesheets/idle/01_idle.png" id="2_s1ocr"]
+[ext_resource type="Texture2D" uid="uid://cgrt01j0q003j" path="res://Riku/images/spritesheets/idle/02_idle.png" id="3_5majx"]
+[ext_resource type="Texture2D" uid="uid://d1ybuxrn3lny6" path="res://Riku/images/spritesheets/idle/03_idle.png" id="5_52um3"]
+[ext_resource type="Texture2D" uid="uid://c42f6aqhtvsy0" path="res://Riku/images/spritesheets/shadow.png" id="6_06m85"]
+
+[sub_resource type="Animation" id="Animation_ebjc6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_6v7gg")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Shadow:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+
+[sub_resource type="Animation" id="Animation_xu5ug"]
+resource_name = "merchant"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("1_6v7gg"), ExtResource("2_s1ocr"), ExtResource("3_5majx"), ExtResource("5_52um3")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Shadow:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("6_06m85")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qe8jq"]
+_data = {
+&"RESET": SubResource("Animation_ebjc6"),
+&"merchant": SubResource("Animation_xu5ug")
+}
+
+[node name="RikuMerchant" type="Node2D"]
+scale = Vector2(1.5, 1.5)
+script = ExtResource("1_s1ocr")
+
+[node name="Shadow" type="Sprite2D" parent="."]
+position = Vector2(-8.666667, 20.866653)
+scale = Vector2(1.3, 1.3)
+
+[node name="Visuals" type="Sprite2D" parent="."]
+position = Vector2(-15.333332, -134.46667)
+scale = Vector2(-1.3, 1.3)
+texture = ExtResource("1_6v7gg")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Visuals")
+libraries = {
+&"": SubResource("AnimationLibrary_qe8jq")
+}
+autoplay = "merchant"
