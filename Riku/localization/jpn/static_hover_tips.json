@@ -1,0 +1,12 @@
+{
+  "RIKU_DARKNESS.description": "[gold]アタック[/gold]を3枚プレイするたびに[purple]闇[/purple]をチャージする。\n\n[purple]闇[/purple]を持っているとき、次にプレイするアタックまたはスキルは[gold]ダメージ+2[/gold]と[green]ブロック+2[/green]を獲得し、闇のストック技にも追加効果が発生する。",
+  "RIKU_DARKNESS.title": "闇",
+  "RIKU_DARK_MASTERY.description": "リクは闇の力を完全に制御した。\n\n闇の力を自動的に得る。\n\n[gold]30 SP[/gold]を蓄積すると、より強力なシチュエーションコマンドを獲得する。",
+  "RIKU_DARK_MASTERY.title": "闇の体得",
+  "RIKU_DARK_SLEIGHT.description": "闇のストック技をプレイすると[gold]3 SP[/gold]を得る。\n\n[purple]闇[/purple]または[gold]闇の極意[/gold]を持っている間、闇のストック技に追加効果が発生する。",
+  "RIKU_DARK_SLEIGHT.title": "闇のストック技",
+  "RIKU_SITUATION_COMMAND.description": "戦闘中、特定のタイミングで使用可能になる特殊なコマンド。\n\n[gold]30 SP[/gold]に到達すると、シチュエーションコマンドを獲得する。\n\n[purple]闇の体得[/purple]中にさらに[gold]30 SP[/gold]を溜めると、より強力なシチュエーションコマンドが使用可能になる。\n\nシチュエーションコマンドを使用すると、そのコマンドは消費され、SPがリセットされる。",
+  "RIKU_SITUATION_COMMAND.title": "シチュエーションコマンド",
+  "RIKU_SP.description": "現在： [gold]%SP%[/gold] / %MAXSP% SP。\n\n各ターン開始時に[gold]1 SP[/gold]を得る。アタックをプレイすると[gold]2 SP[/gold]、闇のストック技をプレイすると[gold]3 SP[/gold]を得る。\n\n[gold]30 SP[/gold]に到達すると、4ターンの間[purple]闇の体得[/purple]を得て、[gold]シチュエーションコマンド[/gold]を手札に加える。",
+  "RIKU_SP.title": "SP(シチュエーションポイント)"
+}

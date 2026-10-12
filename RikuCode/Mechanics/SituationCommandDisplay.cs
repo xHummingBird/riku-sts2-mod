@@ -444,22 +444,22 @@ public partial class SituationCommandDisplay : Control
 
         if (relic.SituationPoints >= 30)
         {
-            commands[0] = DarkMaelstromKey;
+            commands[0] = DarkFiragaKey;
             commands[1] = DarkAuraKey;
 
             _command1HoverTip =
-                HoverTipFactory.FromCard<DarkMaelstrom>();
+                HoverTipFactory.FromCard<DarkFiraga>();
 
             _command2HoverTip =
                 HoverTipFactory.FromCard<DarkAura>();
         }
         else
         {
-            commands[0] = DarkFiragaKey;
+            commands[0] = DarkMaelstromKey;
             commands[1] = ArsSolumKey;
 
             _command1HoverTip =
-                HoverTipFactory.FromCard<DarkFiraga>();
+                HoverTipFactory.FromCard<DarkMaelstrom>();
 
             _command2HoverTip =
                 HoverTipFactory.FromCard<ArsSolum>();

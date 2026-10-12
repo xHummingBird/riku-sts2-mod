@@ -1,0 +1,18 @@
+{
+  "RIKU-BRAVEHEART.description": "自分のターンの開始時に[gold]SP[/gold]1を得る。攻撃したときは[gold]SP[/gold]2を得る。",
+  "RIKU-BRAVEHEART.title": "ブレイブハート",
+  "RIKU-KEYBLADE_OF_HEART.description": "戦闘開始時、ランダムな[gold]闇のストック技[/gold]を2枚[gold]手札[/gold]に加える。",
+  "RIKU-KEYBLADE_OF_HEART.title": "人の心のキーブレード",
+  "RIKU-KINGDOM_KEY_D.description": "10[gold]SP[/gold]から戦闘を始める。",
+  "RIKU-KINGDOM_KEY_D.title": "キングダムチェーンダークサイド",
+  "RIKU-MIRAGE_SPLIT.description": "[gold]シチュエーションコマンド[/gold]をアップグレードする。",
+  "RIKU-MIRAGE_SPLIT.title": "ミラージュスプリット",
+  "RIKU-OBLIVION.description": "[gold]闇のストック技[/gold]の与えるダメージが25%増加する。",
+  "RIKU-OBLIVION.title": "過ぎ去りし思い出",
+  "RIKU-SOUL_EATER.description": "[gold]闇[/gold]を1チャージ分持った状態で戦闘を開始する",
+  "RIKU-SOUL_EATER.title": "ソウルイーター",
+  "RIKU-TRUE_BRAVEHEART.description": "自分のターン開始時に2[gold]SP[/gold]を得る。アタックをプレイすると3[gold]SP[/gold]を得る。[purple]闇の体得[/purple]の持続ターン数が1ターン増加する。",
+  "RIKU-TRUE_BRAVEHEART.title": "ブレイブハート改",
+  "RIKU-WAY_TO_THE_DAWN.description": "[gold]闇[/gold]による増加ダメージと増加[gold]ブロック[/gold]が1増加する。",
+  "RIKU-WAY_TO_THE_DAWN.title": "ウェイトゥザドーン"
+}
